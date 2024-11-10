@@ -25,10 +25,11 @@
         header {
             display: flex;
             flex-direction: column;
+            justify-content: space-between; /* 上下の要素をスペースで分ける */
             background-color: #f9f9f9;
-            padding: 10px 20px 5px; /* 下部のパディングを少し縮める */
+            padding: 10px 20px;
             border-bottom: 2px solid #ddd;
-            height: 70px; /* 元の高さに戻す */
+            height: 70px; /* ヘッダーの高さを固定 */
         }
 
         /* ロゴとタイトルのスタイル */
@@ -54,7 +55,6 @@
             font-size: 0.9em;
             color: #333;
             text-align: right;
-            margin-top: auto; /* メニューを下部に寄せる */
         }
 
         .menu span {
