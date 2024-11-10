@@ -24,11 +24,12 @@
         /* ヘッダーのスタイル */
         header {
             display: flex;
-            align-items: center;
+            flex-direction: column; /* ヘッダーを縦方向に並べる */
             justify-content: space-between;
             background-color: #f9f9f9;
             padding: 10px 20px;
             border-bottom: 2px solid #ddd;
+            height: 100px; /* ヘッダーの高さを設定 */
         }
 
         /* ロゴとタイトルのスタイル */
@@ -54,6 +55,7 @@
             font-size: 0.9em;
             color: #333;
             text-align: right;
+            align-self: flex-end; /* メニューを右端に配置 */
         }
 
         .menu span {
