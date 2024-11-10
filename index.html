@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>蜂須賀学園</title>
-    <!-- ファビコン設定 -->
     <link rel="icon" href="https://hachisuka-gakuen.github.io/top/logo.png" type="image/png">
     <style>
         /* リセットCSS */
@@ -20,57 +19,67 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            line-height: 1.6;
             padding: 20px;
         }
 
-        /* ヘッダーのスタイル */
-        header {
+        /* コンテナのスタイル */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8em;
+            text-align: center;
+            color: #0044cc;
+            margin-bottom: 20px;
+        }
+
+        /* フォームのスタイル */
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        /* 検索ボタンのスタイル */
+        button {
+            padding: 10px;
             background-color: #0044cc;
             color: #fff;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-        }
-
-        /* ナビゲーションのスタイル */
-        nav {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        nav a {
-            color: #0044cc;
-            text-decoration: none;
-            padding: 8px 16px;
-            margin: 0 8px;
-            border-radius: 5px;
-            border: 1px solid #0044cc;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        nav a:hover {
-            background-color: #0044cc;
-            color: #fff;
+        button:hover {
+            background-color: #003399;
         }
 
-        /* メインコンテンツのスタイル */
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        /* テーブルのスタイル */
+        /* 検索結果テーブルのスタイル */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: #fff;
-            border-radius: 5px;
         }
 
         th, td {
@@ -87,85 +96,66 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* フッターのスタイル */
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 30px;
-            border-radius: 8px;
-        }
     </style>
 </head>
 <body>
 
-    <!-- ヘッダー -->
-    <header>
-        <h1>蜂須賀学園</h1>
-    </header>
+    <div class="container">
+        <h1>学生検索</h1>
+        <form>
+            <label for="student-number">呼称番号</label>
+            <input type="text" id="student-number" name="student-number">
 
-    <!-- ナビゲーション -->
-    <nav>
-        <a href="#">ホーム</a>
-        <a href="#">お知らせ</a>
-        <a href="#">学生情報</a>
-        <a href="#">カリキュラム</a>
-    </nav>
+            <label for="last-name">氏名（姓）</label>
+            <input type="text" id="last-name" name="last-name">
 
-    <!-- メインコンテンツ -->
-    <main>
-        <h2>学園のデータベース</h2>
-        <p>こちらは、蜂須賀学園の基本情報をデータベース風に表示しています。</p>
+            <label for="first-name">氏名（名）</label>
+            <input type="text" id="first-name" name="first-name">
 
-        <!-- シンプルなテーブル -->
+            <label>生年月日</label>
+            <input type="number" id="birth-year" name="birth-year" placeholder="年" min="1900">
+            <input type="number" id="birth-month" name="birth-month" placeholder="月" min="1" max="12">
+            <input type="number" id="birth-day" name="birth-day" placeholder="日" min="1" max="31">
+
+            <label for="blood-type">血液型</label>
+            <input type="text" id="blood-type" name="blood-type" placeholder="A, B, AB, O">
+
+            <label>入所年月</label>
+            <input type="number" id="admission-year" name="admission-year" placeholder="年" min="1900">
+            <input type="number" id="admission-month" name="admission-month" placeholder="月" min="1" max="12">
+
+            <label>退所年月</label>
+            <input type="number" id="graduation-year" name="graduation-year" placeholder="年" min="1900">
+            <input type="number" id="graduation-month" name="graduation-month" placeholder="月" min="1" max="12">
+
+            <button type="button">検索</button>
+        </form>
+
+        <!-- 検索結果の表示用テーブル（例） -->
         <table>
             <thead>
                 <tr>
-                    <th>学生番号</th>
-                    <th>名前</th>
-                    <th>学年</th>
-                    <th>専攻</th>
+                    <th>呼称番号</th>
+                    <th>氏名</th>
+                    <th>生年月日</th>
+                    <th>血液型</th>
+                    <th>入所年月</th>
+                    <th>退所年月</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1001</td>
                     <td>田中 太郎</td>
-                    <td>1年</td>
-                    <td>情報科学</td>
+                    <td>2000-04-15</td>
+                    <td>A</td>
+                    <td>2019-04</td>
+                    <td>2023-03</td>
                 </tr>
-                <tr>
-                    <td>1002</td>
-                    <td>佐藤 花子</td>
-                    <td>2年</td>
-                    <td>経済学</td>
-                </tr>
-                <tr>
-                    <td>1003</td>
-                    <td>鈴木 一郎</td>
-                    <td>3年</td>
-                    <td>文学</td>
-                </tr>
-                <tr>
-                    <td>1004</td>
-                    <td>高橋 美咲</td>
-                    <td>4年</td>
-                    <td>法学</td>
-                </tr>
+                <!-- 検索結果のデータがここに表示されます -->
             </tbody>
         </table>
-    </main>
-
-    <!-- フッター -->
-    <footer>
-        <p>&copy; 2024 蜂須賀学園</p>
-    </footer>
+    </div>
 
 </body>
 </html>
