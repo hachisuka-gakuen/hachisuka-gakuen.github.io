@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>蜂須賀学園 - 学生検索</title>
+    <title>蜂窩学園データバンク</title>
+    <!-- ファビコン設定 -->
     <link rel="icon" href="https://hachisuka-gakuen.github.io/top/logo.png" type="image/png">
     <style>
         /* リセットCSS */
@@ -14,176 +14,71 @@
             box-sizing: border-box;
         }
 
-        /* ボディ全体のスタイル */
+        /* 全体のスタイル */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            padding: 20px;
         }
 
-        /* コンテナのスタイル */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 1.8em;
-            text-align: center;
-            color: #0044cc;
-            margin-bottom: 20px;
-        }
-
-        /* フォームのスタイル */
-        form {
+        /* ヘッダーのスタイル */
+        header {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #333;
-            width: 100%;
-            font-size: 0.9em;
-        }
-
-        .form-group {
-            flex: 1 1 calc(33.333% - 20px); /* 3列レイアウト */
-            min-width: 150px;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1em;
-        }
-
-        /* 検索ボタンのスタイル */
-        button {
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f9f9f9;
             padding: 10px 20px;
-            background-color: #0044cc;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: auto;
+            border-bottom: 2px solid #ddd;
         }
 
-        button:hover {
-            background-color: #003399;
+        /* ロゴとタイトルのスタイル */
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* 検索結果カードのスタイル */
-        .result-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .student-card {
-            background-color: #fff;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .student-card img {
-            width: 100%;
+        .logo-title img {
+            width: 40px;
             height: auto;
-            max-height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
         }
 
-        .student-card h3 {
-            font-size: 1.1em;
-            margin: 10px 0 5px;
+        .logo-title h1 {
+            font-family: 'serif';
+            font-size: 1.8em;
+            color: #006400;
         }
 
-        .student-card p {
-            margin: 5px 0;
+        /* メニューのスタイル */
+        .menu {
             font-size: 0.9em;
+            color: #333;
+            text-align: right;
+        }
+
+        .menu span {
+            margin-left: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>学生検索</h1>
-        <form>
-            <div class="form-group">
-                <label for="student-number">呼称番号</label>
-                <input type="text" id="student-number" name="student-number">
-            </div>
-
-            <div class="form-group">
-                <label for="last-name">氏名（姓）</label>
-                <input type="text" id="last-name" name="last-name">
-            </div>
-
-            <div class="form-group">
-                <label for="first-name">氏名（名）</label>
-                <input type="text" id="first-name" name="first-name">
-            </div>
-
-            <div class="form-group">
-                <label>生年月日</label>
-                <input type="number" id="birth-year" name="birth-year" placeholder="年" min="1900">
-                <input type="number" id="birth-month" name="birth-month" placeholder="月" min="1" max="12">
-                <input type="number" id="birth-day" name="birth-day" placeholder="日" min="1" max="31">
-            </div>
-
-            <div class="form-group">
-                <label for="blood-type">血液型</label>
-                <input type="text" id="blood-type" name="blood-type" placeholder="A, B, AB, O">
-            </div>
-
-            <div class="form-group">
-                <label>入所年月</label>
-                <input type="number" id="admission-year" name="admission-year" placeholder="年" min="1900">
-                <input type="number" id="admission-month" name="admission-month" placeholder="月" min="1" max="12">
-            </div>
-
-            <div class="form-group">
-                <label>退所年月</label>
-                <input type="number" id="graduation-year" name="graduation-year" placeholder="年" min="1900">
-                <input type="number" id="graduation-month" name="graduation-month" placeholder="月" min="1" max="12">
-            </div>
-
-            <div class="form-group" style="flex: 1 1 100%; text-align: center;">
-                <button type="button">検索</button>
-            </div>
-        </form>
-
-        <!-- 検索結果の表示用カード -->
-        <div class="result-container">
-            <div class="student-card">
-                <img src="https://via.placeholder.com/150" alt="学生の写真">
-                <h3>田中 太郎</h3>
-                <p>呼称番号: 1001</p>
-                <p>生年月日: 2000-04-15</p>
-                <p>血液型: A</p>
-                <p>入所年月: 2019-04</p>
-                <p>退所年月: 2023-03</p>
-            </div>
-            <!-- 検索結果のデータがここに表示されます -->
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo-title">
+            <img src="https://hachisuka-gakuen.github.io/top/logo.png" alt="蜂窩学園ロゴ">
+            <h1>蜂窩学園データバンク</h1>
         </div>
-    </div>
+        <div class="menu">
+            <span>ファイル(F)</span>
+            <span>ウィンドウ(W)</span>
+            <span>職員連絡(C)</span>
+            <span>生徒管理(A)</span>
+            <span>外来出向(G)</span>
+            <span>日誌(N)</span>
+            <span>マニュアル(M)</span>
+        </div>
+    </header>
 
 </body>
 </html>
