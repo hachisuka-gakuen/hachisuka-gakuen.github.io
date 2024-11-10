@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>蜂須賀学園</title>
+    <title>蜂須賀学園 - 学生検索</title>
     <link rel="icon" href="https://hachisuka-gakuen.github.io/top/logo.png" type="image/png">
     <style>
         /* リセットCSS */
@@ -24,7 +24,7 @@
 
         /* コンテナのスタイル */
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -41,13 +41,22 @@
 
         /* フォームのスタイル */
         form {
-            display: grid;
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         label {
             font-weight: bold;
             color: #333;
+            width: 100%;
+            font-size: 0.9em;
+        }
+
+        .form-group {
+            flex: 1 1 calc(33.333% - 20px); /* 3列レイアウト */
+            min-width: 150px;
         }
 
         input[type="text"],
@@ -61,7 +70,7 @@
 
         /* 検索ボタンのスタイル */
         button {
-            padding: 10px;
+            padding: 10px 20px;
             background-color: #0044cc;
             color: #fff;
             border: none;
@@ -69,32 +78,46 @@
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-top: auto;
         }
 
         button:hover {
             background-color: #003399;
         }
 
-        /* 検索結果テーブルのスタイル */
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* 検索結果カードのスタイル */
+        .result-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .student-card {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        th {
-            background-color: #0044cc;
-            color: #fff;
+        .student-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .student-card h3 {
+            font-size: 1.1em;
+            margin: 10px 0 5px;
+        }
+
+        .student-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -103,58 +126,63 @@
     <div class="container">
         <h1>学生検索</h1>
         <form>
-            <label for="student-number">呼称番号</label>
-            <input type="text" id="student-number" name="student-number">
+            <div class="form-group">
+                <label for="student-number">呼称番号</label>
+                <input type="text" id="student-number" name="student-number">
+            </div>
 
-            <label for="last-name">氏名（姓）</label>
-            <input type="text" id="last-name" name="last-name">
+            <div class="form-group">
+                <label for="last-name">氏名（姓）</label>
+                <input type="text" id="last-name" name="last-name">
+            </div>
 
-            <label for="first-name">氏名（名）</label>
-            <input type="text" id="first-name" name="first-name">
+            <div class="form-group">
+                <label for="first-name">氏名（名）</label>
+                <input type="text" id="first-name" name="first-name">
+            </div>
 
-            <label>生年月日</label>
-            <input type="number" id="birth-year" name="birth-year" placeholder="年" min="1900">
-            <input type="number" id="birth-month" name="birth-month" placeholder="月" min="1" max="12">
-            <input type="number" id="birth-day" name="birth-day" placeholder="日" min="1" max="31">
+            <div class="form-group">
+                <label>生年月日</label>
+                <input type="number" id="birth-year" name="birth-year" placeholder="年" min="1900">
+                <input type="number" id="birth-month" name="birth-month" placeholder="月" min="1" max="12">
+                <input type="number" id="birth-day" name="birth-day" placeholder="日" min="1" max="31">
+            </div>
 
-            <label for="blood-type">血液型</label>
-            <input type="text" id="blood-type" name="blood-type" placeholder="A, B, AB, O">
+            <div class="form-group">
+                <label for="blood-type">血液型</label>
+                <input type="text" id="blood-type" name="blood-type" placeholder="A, B, AB, O">
+            </div>
 
-            <label>入所年月</label>
-            <input type="number" id="admission-year" name="admission-year" placeholder="年" min="1900">
-            <input type="number" id="admission-month" name="admission-month" placeholder="月" min="1" max="12">
+            <div class="form-group">
+                <label>入所年月</label>
+                <input type="number" id="admission-year" name="admission-year" placeholder="年" min="1900">
+                <input type="number" id="admission-month" name="admission-month" placeholder="月" min="1" max="12">
+            </div>
 
-            <label>退所年月</label>
-            <input type="number" id="graduation-year" name="graduation-year" placeholder="年" min="1900">
-            <input type="number" id="graduation-month" name="graduation-month" placeholder="月" min="1" max="12">
+            <div class="form-group">
+                <label>退所年月</label>
+                <input type="number" id="graduation-year" name="graduation-year" placeholder="年" min="1900">
+                <input type="number" id="graduation-month" name="graduation-month" placeholder="月" min="1" max="12">
+            </div>
 
-            <button type="button">検索</button>
+            <div class="form-group" style="flex: 1 1 100%; text-align: center;">
+                <button type="button">検索</button>
+            </div>
         </form>
 
-        <!-- 検索結果の表示用テーブル（例） -->
-        <table>
-            <thead>
-                <tr>
-                    <th>呼称番号</th>
-                    <th>氏名</th>
-                    <th>生年月日</th>
-                    <th>血液型</th>
-                    <th>入所年月</th>
-                    <th>退所年月</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1001</td>
-                    <td>田中 太郎</td>
-                    <td>2000-04-15</td>
-                    <td>A</td>
-                    <td>2019-04</td>
-                    <td>2023-03</td>
-                </tr>
-                <!-- 検索結果のデータがここに表示されます -->
-            </tbody>
-        </table>
+        <!-- 検索結果の表示用カード -->
+        <div class="result-container">
+            <div class="student-card">
+                <img src="https://via.placeholder.com/150" alt="学生の写真">
+                <h3>田中 太郎</h3>
+                <p>呼称番号: 1001</p>
+                <p>生年月日: 2000-04-15</p>
+                <p>血液型: A</p>
+                <p>入所年月: 2019-04</p>
+                <p>退所年月: 2023-03</p>
+            </div>
+            <!-- 検索結果のデータがここに表示されます -->
+        </div>
     </div>
 
 </body>
