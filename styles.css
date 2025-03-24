@@ -38,7 +38,8 @@ body {
 nav {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start; /* 左寄せ */
+    margin-left: 20px; /* さらに少し左へ */
 }
 
 nav ul {
@@ -49,14 +50,23 @@ nav ul {
 }
 
 nav ul li {
-    margin-right: 20px; /* 右側の余白 */
+    margin-right: 15px; /* メニューの余白 */
+    font-size: 16px; /* メニュー文字を少し小さく */
 }
 
-nav ul li:first-child {
-    margin-left: auto; /* 最初の項目（→トップ）は右寄せ */
+/* メニューの区切り線 */
+nav ul li::after {
+    content: "｜"; /* 区切りを「｜」に */
+    color: white;
+    margin-left: 15px;
 }
+
+nav ul li:last-child::after {
+    content: ""; /* 最後の項目には区切りを表示しない */
+}
+
+/* メニューリンクのスタイル */
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
 }
