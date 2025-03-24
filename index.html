@@ -3,82 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蜂窩学園データバンク</title>
-    <!-- ファビコン設定 -->
-    <link rel="icon" href="https://hachisuka-gakuen.github.io/top/logo.png" type="image/png">
-    <style>
-        /* リセットCSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>蜂須賀学園</title>
 
-        /* 全体のスタイル */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+    <!-- ファビコンとアイコンの設定 -->
+    <link rel="icon" href="https://hachisuka-gakuen.github.io/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://hachisuka-gakuen.github.io/logo.png">
+    <meta name="msapplication-TileImage" content="https://hachisuka-gakuen.github.io/logo.png">
 
-        /* ヘッダーのスタイル */
-        header {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* 上下の要素をスペースで分ける */
-            background-color: #f9f9f9;
-            padding: 10px 20px;
-            border-bottom: 2px solid #ddd;
-            height: 70px; /* ヘッダーの高さを固定 */
-        }
-
-        /* ロゴとタイトルのスタイル */
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-title img {
-            width: 40px;
-            height: auto;
-        }
-
-        .logo-title h1 {
-            font-family: 'serif';
-            font-size: 1.8em;
-            color: #006400;
-        }
-
-        /* メニューのスタイル */
-        .menu {
-            font-size: 0.9em;
-            color: #333;
-            text-align: right;
-        }
-
-        .menu span {
-            margin-left: 15px;
-        }
-    </style>
+    <!-- CSSファイルを読み込む -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- ヘッダー -->
     <header>
-        <div class="logo-title">
-            <img src="https://hachisuka-gakuen.github.io/top/logo.png" alt="蜂窩学園ロゴ">
-            <h1>蜂窩学園データバンク</h1>
-        </div>
-        <div class="menu">
-            <span>ファイル(F)</span>
-            <span>ウィンドウ(W)</span>
-            <span>職員連絡(C)</span>
-            <span>生徒管理(A)</span>
-            <span>カメラ(K)</span>
-            <span>マニュアル(M)</span>
+        <div class="menu-bar">
+            <div class="logo">蜂須賀学園</div>
+            <nav>
+                <ul>
+                    <li><a href="#">→トップ</a></li>
+                    <li><a href="#">→幼児科</a></li>
+                    <li><a href="#">→初等科</a></li>
+                    <li><a href="#">→中等科</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
+    <main>
+        <h1>ようこそ、蜂須賀学園へ</h1>
+        <p>ここにコンテンツを追加していきます。</p>
+    </main>
 </body>
 </html>
